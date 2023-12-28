@@ -1,0 +1,31 @@
+# Here is an example that showcases the configuration of an AWS S3 bucket:
+# main.tf
+
+# Provider configuration (for example, AWS)
+provider "aws" {
+  region = "us-west-2"
+}
+
+# S3 Bucket
+resource "aws_s3_bucket" "example_bucket" {
+  bucket = "example-bucket"
+  acl    = "private"
+  
+  versioning {
+    enabled = true
+  }
+
+  lifecycle {
+    prevent_destroy = false
+  }
+
+  logging {
+    target_bucket = "example-logs-bucket"
+    target_prefix = "s3-logs/"
+  }
+
+  tags = {
+    Name        = "example-bucket"
+    Environment = "production"
+  }
+}

@@ -1,0 +1,28 @@
+# In this example, the Jenkinsfile defines a pipeline with three stages: Build, Test, and Deploy. 
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                // Checkout source code from version control
+                git 'https://github.com/example/my-web-app.git'               
+                // Build the application
+                sh 'npm install' // or any build command specific to your application
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run tests
+                sh 'npm test' // or any test command specific to your application
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deploy the application
+                sh 'npm run deploy' // or any deployment command specific to your application
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+# Here is an example of using Terraform to create compute resources in AWS, specifically an EC2 instance:
+# Declare the provider (AWS)
+provider "aws" {
+  region = "us-west-2"  # Replace with your desired region
+}
+
+# Define the EC2 instance resource
+resource "aws_instance" "example" {
+  ami           = "ami-0c94855ba95c71c99"  # Replace with desired AMI ID
+  instance_type = "t2.micro"                # Replace with desired instance type
+  key_name      = "my-key-pair"             # Replace with your SSH key pair name
+
+  tags = {
+    Name = "My EC2 Instance"
+  }
+}
